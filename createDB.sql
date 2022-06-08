@@ -20,6 +20,7 @@ CEP varchar(8)
 );
 
 create table Despesa (
+descricao varchar(45) not null,
 dataCompra date not null,
 dataHoraEvento datetime,
 bufferChegada datetime,
@@ -168,7 +169,10 @@ alter table Despesa
 		foreign key (TipoDespesa_idTipoDespesa) references TipoDespesa(idTipoDespesa),
 	add Ferias_idFerias int not null,
     add constraint fk_DespesaFerias
-		foreign key (Ferias_idFerias) references Ferias(idFerias);
+		foreign key (Ferias_idFerias) references Ferias(idFerias),
+	add PontoTuristico_idPontoTuristico int,
+    add constraint fk_DespesaPontoTuristico
+		foreign key (PontoTuristico_idPontoTuristico) references PontoTuristico(idPontoTuristico);
 
 alter table EmailFornecedor
 	add Despesa_idDespesa int not null,
